@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector(".search-box")
     const inputBox = document.querySelector('.input-box');
     const searchBtn = document.getElementById('searchBtn');
     const weather_img = document.querySelector('.weather-img');
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            locationError.style.display = "none";
+            locationError.style.display = 'none';
             weatherBody.style.display = "flex";
             temperature.innerHTML = `${Math.round(weatherData.main.temp - 273.15)}°C`;
             description.innerHTML = `${weatherData.weather[0].description}`;
@@ -54,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    searchBtn.addEventListener('click', () => {
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+        
         checkweather(inputBox.value);
     });
 });
